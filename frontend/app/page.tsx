@@ -1,11 +1,17 @@
-import Image from "next/image";
-import TopBar from "./components/TopBar";
 import SummaryCard from "./components/SummaryCard";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 export default function Home() {
   return (
-    <div className="w-full h-full  m-10 font-semibold p-8 ">
-
-    </div>
-  );
+    <Box sx={{ flexGrow: 1, padding: "42px 10px" }}>
+    <Grid container spacing={2}>
+      {[1,2,3].map((item, index) => (
+        <Grid item xs={12} sm={6} md={4} key={index}>
+          <SummaryCard/>
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
+);
 }
