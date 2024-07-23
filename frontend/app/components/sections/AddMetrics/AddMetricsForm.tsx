@@ -2,11 +2,11 @@ import { Box, styled } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import React from "react";
 
-const AddMetricsForm = () => {
-  const StyledTextField = styled(TextField) ({
-    width: "100%",
-  });
+const StyledTextField = styled(TextField)({
+  width: "100%",
+});
 
+const AddMetricsForm = () => {
   return (
     <Box sx={{ width: "100%" }}>
       <StyledTextField
