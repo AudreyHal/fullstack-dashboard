@@ -1,8 +1,13 @@
-'use client'
+"use client";
 import "./globals.css";
-import TopBar from "./components/TopBar";
-import Container from "@mui/material/Container";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import TopBar from "./components/layout/TopBar";
 
+// Creates a react-query client
+const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -10,12 +15,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <meta name="viewport" content="initial-scale=1, width=device-width" />
-      <body >
-        <TopBar/>
-        <Container maxWidth="lg" sx={{backgroundColor: 'white', borderRadius: 5, marginTop: 5}}> {children}</Container>
+    // Provides the client to the App to allow use of react-query hookds
+    <QueryClientProvider client={queryClient}>
+      <html lang="en">
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <body>
+          <TopBar />
+          {children}
         </body>
-    </html>
+      </html>
+    </QueryClientProvider>
   );
 }
