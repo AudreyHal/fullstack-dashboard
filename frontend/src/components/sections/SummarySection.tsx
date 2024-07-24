@@ -9,11 +9,17 @@ const SummarySection = () => {
   const averagesData = averages.data;
 
   return (
-    <Box sx={{ flexGrow: 1, padding: "42px 10px" }}>
-      <Grid container spacing={2}>
+    <Box flexGrow={1} padding={ "42px 10px" }>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={4}>
-          <SummaryCard value={averagesData?.day} text={"daily average"} />
-        </Grid>
+          <SummaryCard value={averagesData?.minute} text={"Latest per minute average"} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+          <SummaryCard value={averagesData?.hour} text={"Latest hourly average"} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+          <SummaryCard value={averagesData?.day} text={"Latest daily average"} />
+          </Grid>      
       </Grid>
     </Box>
   );

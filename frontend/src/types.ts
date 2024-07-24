@@ -10,8 +10,8 @@ export type MetricsInputType = {
 
 export type AveragesDataResponseType = {
   day: number;
-  month: number;
-  year: number;
+  minute: number;
+  hour: number;
 };
 
 export type MetricsDataResponseType = {
