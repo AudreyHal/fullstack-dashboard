@@ -1,7 +1,7 @@
 import axiosApi from '@/src/services/axiosApi';
 import { AveragesDataResponseType } from '@/src/types';
 import { useQuery } from '@tanstack/react-query';
-import { metricsQueryKeys } from '../MetricsQueryKeys';
+import { metricsQueryKeys } from '../metricsQueryKeys';
 
 export const getAverages = async (): Promise<AveragesDataResponseType> => {
     const response = await axiosApi.get(`/metrics/averages`);
@@ -9,7 +9,7 @@ export const getAverages = async (): Promise<AveragesDataResponseType> => {
   };
 const useGetMetricsAveragesQuery = () => {
     return useQuery({
-        queryKey: metricsQueryKeys.listAverages(),
+        queryKey: metricsQueryKeys.averages(),
         queryFn: getAverages,
       });
 }

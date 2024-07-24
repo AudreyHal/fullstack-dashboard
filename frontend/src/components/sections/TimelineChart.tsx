@@ -2,52 +2,50 @@
 import dynamic from "next/dynamic";
 import React from "react";
 import "chart.js/auto";
-import { format } from "date-fns/format";
-//  Lazy load Bar component
+import useGetAllMetricsQuery from "@/src/hooks/react-query/Metrics/queries/useGetAllMetricsQuery";
+import { formatDate } from "@/src/utilities/Date";
+//  Lazy load bar chart component
 const Bar = dynamic(() => import("react-chartjs-2").then((mod) => mod.Bar), {
   ssr: false,
 });
 
-const formatDate = (date: string) => {
-  return format(date, "MMM dd, HH:mm");
-};
+const TimelineChart = () => {
+  const getAllMetrics = useGetAllMetricsQuery();
+  const getAllMetricsData = getAllMetrics.data;
 
-const data = {
-  labels: [
-    formatDate("2024-07-24T10:15:00"),
-    formatDate("2024-07-24T10:16:00"),
-    formatDate("2024-07-24T10:17:00"),
-  ],
-  datasets: [
-    {
-      label: "Metric Value",
-      data: [5, 7, 3],
-      fill: false,
-      borderColor: "rgb(75, 192, 192)",
-      backgroundColor: "rgba(75, 192, 192, 0.2)",
-      tension: 0.1,
-    },
-  ],
-};
+  const data = {
+    labels: getAllMetricsData?.map((metric) => formatDate(metric.timestamp)),
+    datasets: [
+      {
+        label: "Metric Value",
+        data: getAllMetricsData?.map((metric) => metric.value),
+        fill: false,
+        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        tension: 0.1,
+      },
+    ],
+  };
 
-const TimelineChart = () => (
-  <div
-    style={{
-      width: "100%",
-      height: "100%",
-      position: "relative",
-      paddingBottom: 20,
-    }}
-  >
-    <Bar
-      data={data}
-      style={{ width: "100%", height: "100%" }}
-      options={{
-        responsive: true,
-        maintainAspectRatio: false,
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        paddingBottom: 20,
       }}
-    />
-  </div>
-);
+    >
+      <Bar
+        data={data}
+        style={{ width: "100%", height: "100%" }}
+        options={{
+          responsive: true,
+          maintainAspectRatio: false,
+        }}
+      />
+    </div>
+  );
+};
 
 export default TimelineChart;

@@ -14,6 +14,13 @@ export type AveragesDataResponseType = {
   year: number;
 };
 
+export type MetricsDataResponseType = {
+  name: string;
+  timestamp: string;
+  userId: string;
+  value: number;
+};
+
 export type ErrorResponse = {
   response: {
     data: {

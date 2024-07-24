@@ -21,7 +21,7 @@ const TopBar = () => {
     <AppBar position='relative'>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          DASHAT
+          Welcome
         </Typography>
         <Button color="inherit" onClick={handleLogOut} >Log Out</Button>
       </Toolbar>
