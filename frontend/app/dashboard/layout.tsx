@@ -1,6 +1,7 @@
 "use client";
 import TopBar from "@/src/components/layout/TopBar";
-import withAuthenticatedLayout from "@/src/hocs/withAuthenticatedLayout";
+import withAuthLayout from "@/src/hocs/withAuthLayout";
+
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -12,4 +13,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default withAuthenticatedLayout(Layout);
+export default withAuthLayout(Layout);

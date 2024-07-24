@@ -3,16 +3,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { useState } from "react";
-import { styled } from "@mui/material";
+import { Typography, styled } from "@mui/material";
 import AddMetricsModal from "@/src/components/sections/AddMetrics/AddMetricsModal";
 import SummarySection from "@/src/components/sections/SummarySection";
 import TimelineChart from "@/src/components/sections/TimelineChart";
-
-const StyledContainer = styled(Container)({
-  backgroundColor: "white",
-  borderRadius: 5,
-  marginTop: 5,
-});
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
@@ -26,21 +20,10 @@ export default function Dashboard() {
           </Button>
           <AddMetricsModal open={open} handleClose={() => setOpen(false)} />
         </Box>
-      </Container>
-      <StyledContainer maxWidth="lg">
         <SummarySection />
-      </StyledContainer>
-      <StyledContainer
-        maxWidth="lg"
-        sx={{
-          marginTop: 5,
-          paddingBottom: 10,
-          paddingTop: 10,
-          height: 600,
-        }}
-      >
+        <Typography variant="h2" fontSize={18} fontWeight={600} marginTop={5} color={'#121212'}>Activity Timeline</Typography>
         <TimelineChart />
-      </StyledContainer>
+      </Container>
     </>
   );
 }

@@ -3,7 +3,13 @@ import { getToken } from "@/src/utilities/Auth";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
-const withAuthenticatedLayout = (WrappedComponent: any) => {
+/**
+ * HOC wrapper for authenticated pages
+ * @param WrappedComponent 
+ * @returns {component}
+ */
+
+const withAuthLayout = (WrappedComponent: any) => {
   const AuthenticateLayout = (props: any) => {
     const router = useRouter();
     const token = getToken();
@@ -21,4 +27,4 @@ const withAuthenticatedLayout = (WrappedComponent: any) => {
   return AuthenticateLayout;
 };
 
-export default withAuthenticatedLayout;
+export default withAuthLayout;

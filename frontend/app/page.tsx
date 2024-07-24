@@ -1,24 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Login from "./login/page";
-import { getToken } from "@/src/utilities/Auth";
-import { useRouter, usePathname } from "next/navigation";
+import useRedirectBasePath from "@/src/hooks/useRedirectBasePath";
 
 const App = () => {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const handleAuthRedirect = () => {
-    const token = getToken();
-    if (!token && pathname === "/") {
-      router.replace("/login");
-    } else if (token && pathname === "/") {
-      router.replace("/dashboard");
-    }
-  };
-  useEffect(() => {
-    handleAuthRedirect();
-  }, [router]);
+  useRedirectBasePath()
 
   return <Login />;
 };
