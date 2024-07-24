@@ -2,13 +2,11 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-
 import { useState } from "react";
-
 import { styled } from "@mui/material";
-import { LineChart } from "@mui/x-charts/LineChart";
 import AddMetricsModal from "@/src/components/sections/AddMetrics/AddMetricsModal";
 import SummarySection from "@/src/components/sections/SummarySection";
+import TimelineChart from "@/src/components/sections/TimelineChart";
 
 const StyledContainer = styled(Container)({
   backgroundColor: "white",
@@ -28,7 +26,8 @@ export default function Dashboard() {
         maxWidth="lg"
         sx={{
           marginTop: 5,
-          padding: 5,
+          paddingBottom: 10,
+          paddingTop: 10,
           height: 600,
         }}
       >
@@ -38,16 +37,7 @@ export default function Dashboard() {
           </Button>
           <AddMetricsModal open={open} handleClose={() => setOpen(false)} />
         </Box>
-        <LineChart
-          xAxis={[{ data: [0, 10, 20, 30, 50, 80, 100] }]}
-          series={[
-            {
-              data: [10, 2, 5.5, 2, 8.5, 1.5, 50],
-            },
-          ]}
-          // width={'100%'}
-          // height={300}
-        />
+        <TimelineChart />
       </StyledContainer>
     </>
   );
