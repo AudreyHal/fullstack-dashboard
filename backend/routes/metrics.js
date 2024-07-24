@@ -21,7 +21,7 @@ router.post(
     try {
       const metric = new Metric({ name, value, timestamp: new Date(), userId: req.user.id });
       await metric.save();
-      res.json(metric);
+      res.status(201).json(metric);
     } catch (err) {
       res.status(500).send('Server error');
     }
@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
 
 
 // Get average metrics per minute/hour/day for all users
-router.get('/average', async (req, res) => {
+router.get('/averages', async (req, res) => {
   const calculateAverage = async (periodFormat) => {
     const result = await Metric.aggregate([
       {

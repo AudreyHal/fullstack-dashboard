@@ -1,3 +1,4 @@
+import useAddMetricsMutation from "@/src/hooks/react-query/Metrics/mutations/useAddMetricsMutation";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -5,6 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 interface AddMetricsModalProps {
   open: boolean;
@@ -13,10 +15,16 @@ interface AddMetricsModalProps {
 
 const AddMetricsModal = ({ open, handleClose }: AddMetricsModalProps) => {
   const { register, handleSubmit, reset } = useForm();
+  const addMetricsMutation = useAddMetricsMutation();
+
   const onSubmit = (data: any) => {
-    console.log("Form Data:", data);
-    // reset(); // Reset the form after submission
-    // handleClose(); // Close the dialog after submission
+    addMetricsMutation.mutate(data, {
+      onSuccess: () => {
+        toast.success("Metric added succesfully");
+        handleClose?.(); // Close the dialog after submission
+        reset(); // Reset the form after submission
+      },
+    });
   };
 
   return (
