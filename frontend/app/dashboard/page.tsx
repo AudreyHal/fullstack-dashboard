@@ -6,7 +6,6 @@ import Container from "@mui/material/Container";
 import { useState } from "react";
 
 import { styled } from "@mui/material";
-import { BarChart } from "@mui/x-charts/BarChart";
 import { LineChart } from "@mui/x-charts/LineChart";
 import AddMetricsModal from "@/src/components/sections/AddMetrics/AddMetricsModal";
 import SummarySection from "@/src/components/sections/SummarySection";

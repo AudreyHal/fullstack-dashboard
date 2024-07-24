@@ -3,15 +3,14 @@ import { getToken } from "@/src/utilities/Auth";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
-
-const withAuthenticateLayout = (WrappedComponent: any) => {
+const withAuthenticatedLayout = (WrappedComponent: any) => {
   const AuthenticateLayout = (props: any) => {
     const router = useRouter();
     const token = getToken();
 
     React.useEffect(() => {
       if (!token) {
-        return router.push(("/"));
+        return router.push("/login");
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
@@ -22,4 +21,4 @@ const withAuthenticateLayout = (WrappedComponent: any) => {
   return AuthenticateLayout;
 };
 
-export default withAuthenticateLayout;
+export default withAuthenticatedLayout;
