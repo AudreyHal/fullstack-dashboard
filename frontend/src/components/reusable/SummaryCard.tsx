@@ -2,18 +2,21 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-const SummaryCard = () => {
+interface SummaryCardProps {
+  value?: number;
+  text: string;
+}
+
+const SummaryCard = ({ value, text }: SummaryCardProps) => {
   return (
     <Card>
-    <CardContent>
-      <Typography variant="h3" color="text.secondary">
-        {1000}
-      </Typography>
-      <Typography variant="body2">
-        {"Daily Average"}
-      </Typography>
-    </CardContent>
-  </Card>
+      <CardContent>
+        <Typography variant="h3" color="text.secondary">
+          {value || 0}
+        </Typography>
+        <Typography variant="body2">{text}</Typography>
+      </CardContent>
+    </Card>
   );
 };
 
