@@ -51,11 +51,11 @@ const AddMetricsModal = ({ open, handleClose }: AddMetricsModalProps) => {
       <DialogContent dividers>
         <AddMetricsForm />
       </DialogContent>
-      <DialogActions>
+      {/* <DialogActions>
         <Button variant="contained" autoFocus onClick={handleClose}>
           Create
         </Button>
-      </DialogActions>
+      </DialogActions> */}
     </StyledDialog>
   );
 };

@@ -7,8 +7,11 @@ const StyledTextField = styled(TextField)({
 });
 
 const AddMetricsForm = () => {
+  const handleSubmit =(e)=>{
+    console.log(e.target)
+  }
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }} component={"form"} onSubmit={handleSubmit}>
       <StyledTextField
         required
         id="outlined-required"
@@ -22,6 +25,7 @@ const AddMetricsForm = () => {
         label="Required"
         defaultValue="Hello World"
       />
+      <button >Create</button>
     </Box>
   );
 };

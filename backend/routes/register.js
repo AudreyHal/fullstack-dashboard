@@ -23,12 +23,12 @@ router.post(
     try {
       let user = await User.findOne({ username });
       if (user) {
-        return res.status(400).json({ msg: 'User already exists' });
+        return res.status(400).json({ message: 'User already exists' });
       }
 
       user = new User({ username, password });
       await user.save();
-      res.json({ msg: 'User registered successfully' });
+      res.json({ message: 'User registered successfully' });
     } catch (err) {
       res.status(500).send('Server error');
     }

@@ -24,12 +24,12 @@ router.post(
     try {
       const user = await User.findOne({ username });
       if (!user) {
-        return res.status(400).json({ msg: 'Invalid credentials' });
+        return res.status(400).json({ message: 'Invalid credentials' });
       }
 
       const isMatch = await user.comparePassword(password);
       if (!isMatch) {
-        return res.status(400).json({ msg: 'Invalid credentials' });
+        return res.status(400).json({ message: 'Invalid credentials' });
       }
 
       const payload = { userId: user.id };
