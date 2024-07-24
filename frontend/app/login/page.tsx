@@ -1,5 +1,6 @@
+'use client'
 import { useForm } from "react-hook-form";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 import { LoginInputType } from "@/src/types";
 import useLoginMutation from "@/src/hooks/react-query/Auth/useLoginMutation";
@@ -14,6 +15,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<LoginInputType>();
   const loginMutation = useLoginMutation();
+  const router = useRouter();
 
   const onSubmit = async (data: any) => {
     loginMutation.mutate(data, {
@@ -25,7 +27,7 @@ const Login = () => {
           "Authorization"
         ] = `Bearer ${token}`;
         // Redirect to dashboard page
-        redirect("/dashboard");
+        router.push("/dashboard");
       },
     });
   };
