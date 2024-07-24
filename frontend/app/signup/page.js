@@ -1,46 +1,40 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { LoginInputType } from "@/src/types";
-import useLoginMutation from "@/src/hooks/react-query/Auth/mutations/useLoginMutation";
-import axiosInstance from "@/src/services/axiosApi";
-import { setToken } from "@/src/utilities/Auth";
 import {
   Box,
   Button,
   Container,
-  Link,
+  CssBaseline,
   TextField,
   Typography,
+  Link,
 } from "@mui/material";
+import useSignupMutation from "@/src/hooks/react-query/Auth/mutations/useSignUpMutation";
+import { toast } from "react-toastify";
 
-const Login = () => {
+export default function Signup() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginInputType>();
-  const loginMutation = useLoginMutation();
+  } = useForm();
   const router = useRouter();
+  const signupMutation = useSignupMutation();
 
-  const onSubmit = async (data: any) => {
-    loginMutation.mutate(data, {
+  const onSubmit = async (data) => {
+    signupMutation.mutate(data, {
       onSuccess: (data) => {
-        // Store jwt
-        const token = data.data.token;
-        setToken(token);
-
-        axiosInstance.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${token}`;
-        // Redirect to dashboard page
-        router.push("/dashboard");
+        toast.success(data?.data?.message);
+        // Redirect to login page
+        router.push("/login");
       },
     });
   };
 
   return (
     <Container component="main" maxWidth="xs">
+      <CssBaseline />
       <Box
         sx={{
           display: "flex",
@@ -51,7 +45,7 @@ const Login = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign In
+          Sign Up
         </Typography>
         <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
           <TextField
@@ -60,27 +54,43 @@ const Login = () => {
             fullWidth
             id="username"
             label="Username"
+            name="username"
+            autoComplete="username"
+            autoFocus
+            {...register("username", {
+              required: "Username is required",
+              minLength: {
+                value: 6,
+                message: "Username should be at least 6 characters long",
+              },
+            })}
+            error={!!errors.username}
+            helperText={errors.username?.message}
             InputLabelProps={{
               shrink: true,
             }}
-            autoFocus
-            {...register("username", { required: "Username is required" })}
-            error={!!errors.username}
-            helperText={errors.username?.message}
           />
           <TextField
             margin="normal"
             required
             fullWidth
-            InputLabelProps={{
-              shrink: true,
-            }}
+            name="password"
             label="Password"
             type="password"
             id="password"
-            {...register("password", { required: "Password is required" })}
+            autoComplete="new-password"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password should be at least 6 characters long",
+              },
+            })}
             error={!!errors.password}
             helperText={errors.password?.message}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <Button
             type="submit"
@@ -88,18 +98,16 @@ const Login = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Sign Up
           </Button>
           <Typography variant="body2" color="text.secondary" align="center">
-            {"Don't have an account? "}
-            <Link href="/signup" variant="body2">
-              Sign Up
+            {"Already have an account? "}
+            <Link href="/login" variant="body2">
+              Sign In
             </Link>
           </Typography>
         </Box>
       </Box>
     </Container>
   );
-};
-
-export default Login;
+}
