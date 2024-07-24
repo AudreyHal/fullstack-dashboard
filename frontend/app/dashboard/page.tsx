@@ -19,6 +19,14 @@ export default function Dashboard() {
 
   return (
     <>
+      <Container maxWidth="lg">
+        <Box display="flex" justifyContent="right" paddingY={2}>
+          <Button variant="contained" sx={{}} onClick={() => setOpen(true)}>
+            Add Metrics
+          </Button>
+          <AddMetricsModal open={open} handleClose={() => setOpen(false)} />
+        </Box>
+      </Container>
       <StyledContainer maxWidth="lg">
         <SummarySection />
       </StyledContainer>
@@ -31,12 +39,6 @@ export default function Dashboard() {
           height: 600,
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "right" }}>
-          <Button variant="contained" sx={{}} onClick={() => setOpen(true)}>
-            Add Metrics
-          </Button>
-          <AddMetricsModal open={open} handleClose={() => setOpen(false)} />
-        </Box>
         <TimelineChart />
       </StyledContainer>
     </>

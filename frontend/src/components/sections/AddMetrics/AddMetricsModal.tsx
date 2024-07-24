@@ -1,62 +1,55 @@
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  styled,
-} from "@mui/material";
 import Button from "@mui/material/Button";
-import CloseIcon from "@mui/icons-material/Close";
-import React from "react";
-import AddMetricsForm from "./AddMetricsForm";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import TextField from "@mui/material/TextField";
+import { useForm } from "react-hook-form";
 
 interface AddMetricsModalProps {
   open: boolean;
   handleClose?: () => void;
 }
 
-const StyledDialog = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialogContent-root": {
-    padding: `${theme.spacing(4)} ${theme.spacing(2)}`,
-    width: 400,
-  },
-  "& .MuiDialogActions-root": {
-    padding: theme.spacing(1),
-  },
-}));
-
 const AddMetricsModal = ({ open, handleClose }: AddMetricsModalProps) => {
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data: any) => {
+    console.log("Form Data:", data);
+    // reset(); // Reset the form after submission
+    // handleClose(); // Close the dialog after submission
+  };
+
   return (
-    <StyledDialog
-      onClose={handleClose}
-      aria-labelledby="customized-dialog-title"
-      open={open}
-    >
-      <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-        Add New Metrics
-      </DialogTitle>
-      <IconButton
-        aria-label="close"
-        onClick={handleClose}
-        sx={{
-          position: "absolute",
-          right: 8,
-          top: 8,
-          color: (theme) => theme.palette.grey[500],
-        }}
-      >
-        <CloseIcon />
-      </IconButton>
-      <DialogContent dividers>
-        <AddMetricsForm />
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>Add a New Metric</DialogTitle>
+      <DialogContent>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Name"
+            {...register("name", { required: true })}
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Value"
+            {...register("value", { required: true })}
+          />
+        </form>
       </DialogContent>
-      {/* <DialogActions>
-        <Button variant="contained" autoFocus onClick={handleClose}>
-          Create
+      <DialogActions>
+        <Button onClick={handleClose}>Cancel</Button>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit(onSubmit)}
+        >
+          Submit
         </Button>
-      </DialogActions> */}
-    </StyledDialog>
+      </DialogActions>
+    </Dialog>
   );
 };
 
