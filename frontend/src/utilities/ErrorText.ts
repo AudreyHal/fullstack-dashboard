@@ -1,0 +1,1 @@
+export const DEFAULT_ERROR_TEXT = "Something went wrong. Try again later."

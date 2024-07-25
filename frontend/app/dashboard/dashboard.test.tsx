@@ -11,14 +11,14 @@ describe("Dashboard", () => {
       </MockProvider>
     );
 
-    // Check if the button to add metrics is present
+    // check if the button to add metrics is present
     expect(screen.getByRole("button", { name: "Add Metrics" })).toBeTruthy();
 
-    // Check if cards to display average is present
+    // check if cards to display average is present
     expect(screen.getByText("Latest per minute average")).toBeTruthy();
     expect(screen.getByText("Latest hourly average")).toBeTruthy();
     expect(screen.getByText("Latest daily average")).toBeTruthy();
-    // Check if  "Activity Timeline" text is rendered correctly
+    // check if "Activity Timeline" text is rendered correctly
     expect(screen.getByText("Activity Timeline")).toBeTruthy();
   });
 });
