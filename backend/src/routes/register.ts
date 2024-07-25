@@ -1,4 +1,4 @@
-import { registerController } from 'controllers/authcontroller';
+import { registerController } from 'controllers/authController';
 import express from 'express';
 import { check } from 'express-validator';
 
