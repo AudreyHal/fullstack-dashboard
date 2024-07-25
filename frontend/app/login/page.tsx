@@ -26,14 +26,14 @@ const Login = () => {
   const onSubmit = async (data: any) => {
     loginMutation.mutate(data, {
       onSuccess: (data) => {
-        // Store jwt
+        // store jwt
         const token = data.data.token;
         setToken(token);
 
         axiosInstance.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${token}`;
-        // Redirect to dashboard page
+        // redirect to dashboard page
         router.push("/dashboard");
       },
     });

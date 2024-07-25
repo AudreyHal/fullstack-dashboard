@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import Metric from '../models/Metric';
 
-// Post a new metric
+// post a new metric
 export const postMetric = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -20,7 +20,7 @@ export const postMetric = async (req: Request, res: Response) => {
   }
 };
 
-// Get all metrics
+// get all metrics
 export const getAllMetrics = async (req: Request, res: Response) => {
   try {
     const metrics = await Metric.find();
@@ -30,7 +30,7 @@ export const getAllMetrics = async (req: Request, res: Response) => {
   }
 };
 
-// Get average metrics per minute/hour/day for all users
+// get average metrics per minute/hour/day for all users
 export const getAverageMetrics = async (req: Request, res: Response) => {
   const calculateAverage = async (periodFormat: string) => {
     const result = await Metric.aggregate([
@@ -53,7 +53,7 @@ export const getAverageMetrics = async (req: Request, res: Response) => {
       day: await calculateAverage('%Y-%m-%d')
     };
 
-    // Return latest averages rounded to an integer
+    // return latest averages rounded to an integer
     res.json({
       minute: averages.minute.length > 0 ? Math.round(averages.minute[averages.minute.length - 1]) : 0,
       hour: averages.hour.length > 0 ? Math.round(averages.hour[averages.hour.length - 1]) : 0,

@@ -29,11 +29,11 @@ const AddMetricsModal = ({ open, handleClose }: AddMetricsModalProps) => {
   const onSubmit = (data: any) => {
     addMetricsMutation.mutate(data, {
       onSuccess: () => {
-        // Invalidate and refetch related queries
+        // invalidate and refetch related queries
         queryClient.invalidateQueries({ queryKey: metricsQueryKeys.all() });
         toast.success("Metric added succesfully");
-        handleClose?.(); // Close the dialog after submission
-        reset(); // Reset the form after submission
+        handleClose?.(); // close the dialog after submission
+        reset(); // reset the form after submission
       },
     });
   };

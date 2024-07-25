@@ -8,7 +8,7 @@ import {
 
 const router = express.Router();
 
-// Post a new metric
+// post a new metric
 router.post(
   "/",
   [
@@ -18,10 +18,10 @@ router.post(
   postMetric
 );
 
-// Get metrics for all users
+// get metrics for all users
 router.get("/", getAllMetrics);
 
-// Get average metrics per minute/hour/day for all users
+// get average metrics per minute/hour/day for all users
 router.get("/averages", getAverageMetrics);
 
 export default router;

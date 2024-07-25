@@ -38,7 +38,7 @@ export const loginController = async (req: Request, res: Response) => {
 
 
 export const registerController = async (req: Request, res: Response) => {
-  // Validate request input
+  // validates request input
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -47,13 +47,13 @@ export const registerController = async (req: Request, res: Response) => {
   const { username, password } = req.body;
 
   try {
-    // Check if the user already exists
+    // checks if the user already exists
     let user: IUser | null = await User.findOne({ username }).exec();
     if (user) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    // Create a new user and save to the database
+    // create a new user and save to the database
     user = new User({ username, password });
     await user.save();
     res.json({ message: 'User registered successfully' });

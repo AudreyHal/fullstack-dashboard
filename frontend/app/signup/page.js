@@ -26,7 +26,7 @@ export default function Signup() {
     signupMutation.mutate(data, {
       onSuccess: (data) => {
         toast.success(data?.data?.message);
-        // Redirect to login page
+        // redirect to login page
         router.push("/login");
       },
     });
