@@ -5,11 +5,6 @@ import MockProvider from "@/src/testing-utils/MockProvider";
 import userEvent from "@testing-library/user-event";
 
 describe("AddMetricsModal", () => {
-  // Clean up after tests
-  afterEach(() => {
-    cleanup();
-  });
-
   it("renders correctly when open", () => {
     render(
       <MockProvider>

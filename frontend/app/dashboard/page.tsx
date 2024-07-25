@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { useState } from "react";
-import { Typography, styled } from "@mui/material";
+import { Typography } from "@mui/material";
 import AddMetricsModal from "@/src/components/sections/AddMetrics/AddMetricsModal";
 import SummarySection from "@/src/components/sections/SummarySection";
 import TimelineChart from "@/src/components/sections/TimelineChart";
