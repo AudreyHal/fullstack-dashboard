@@ -9,7 +9,7 @@ const SummarySection = () => {
   const averagesData = averages.data;
 
   return (
-    <Box flexGrow={1} padding={ "42px 10px" }>
+    <Box flexGrow={1} padding={ "32px 10px" }>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={4}>
           <SummaryCard value={averagesData?.minute} text={"Latest per minute average"} />

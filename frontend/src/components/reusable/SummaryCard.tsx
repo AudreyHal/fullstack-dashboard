@@ -9,7 +9,13 @@ interface SummaryCardProps {
 
 const SummaryCard = ({ value, text }: SummaryCardProps) => {
   return (
-    <Card>
+    <Card
+      sx={{
+        boxShadow:
+          "0px 2px 4px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08)",
+        borderRadius: "8px",
+      }}
+    >
       <CardContent>
         <Typography variant="h3" color="text.secondary">
           {value || 0}
