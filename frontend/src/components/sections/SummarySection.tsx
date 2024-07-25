@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import React from "react";
-import SummaryCard from "../reusable/SummaryCard";
+import SummaryCard from "../reusable/SummaryCard/SummaryCard";
 import useGetMetricsAveragesQuery from "@/src/hooks/react-query/Metrics/queries/useGetMetricsAveragesQuery";
 
 const SummarySection = () => {
