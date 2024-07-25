@@ -1,6 +1,6 @@
-const express = require('express');
-const { check, validationResult } = require('express-validator');
-const Metric = require('../models/Metric');
+import express,{ Request, Response} from 'express';
+import { check, validationResult } from 'express-validator';
+import Metric from '../models/Metric'
 const router = express.Router();
 
 // Post a new metric
@@ -10,7 +10,7 @@ router.post(
     check('name', 'Name is required').not().isEmpty(),
     check('value', 'Value is required').isFloat(),
   ],
-  async (req, res) => {
+  async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -29,7 +29,7 @@ router.post(
 );
 
 
-// Get all metrics for a user
+// Get all metrics 
 router.get('/', async (req, res) => {
   try {
     const metrics = await Metric.find();
@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 
 // Get average metrics per minute/hour/day for all users
 router.get('/averages', async (req, res) => {
-  const calculateAverage = async (periodFormat) => {
+  const calculateAverage = async (periodFormat: string) => {
     const result = await Metric.aggregate([
       {
         $group: {
@@ -74,7 +74,4 @@ router.get('/averages', async (req, res) => {
   }
 });
 
-
-module.exports = router;
-
-//@todo: move to controller
+export default router

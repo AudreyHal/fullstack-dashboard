@@ -13,7 +13,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{paddingY: 3}}>
         <Box display="flex" justifyContent="right" paddingY={2}>
           <Button variant="contained" sx={{}} onClick={() => setOpen(true)}>
             Add Metrics

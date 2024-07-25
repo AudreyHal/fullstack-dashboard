@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const metricSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -9,4 +9,4 @@ const metricSchema = new mongoose.Schema({
 
 const Metric = mongoose.model('Metric', metricSchema);
 
-module.exports = Metric;
+export default Metric;
