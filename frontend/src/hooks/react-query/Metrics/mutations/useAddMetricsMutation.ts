@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { ErrorResponse, MetricsInputType } from "@/src/types";
-import axiosApi from "@/src/services/axiosApi";
+import axiosApi from "@/src/utilities/axiosApi";
 import { toast } from "react-toastify";
 
 const addMetrics = (input: MetricsInputType): Promise<AxiosResponse> => {

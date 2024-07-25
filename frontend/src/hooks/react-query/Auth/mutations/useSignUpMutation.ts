@@ -2,7 +2,7 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { ErrorResponse, LoginInputType } from "@/src/types";
-import axiosApi from "@/src/services/axiosApi";
+import axiosApi from "@/src/utilities/axiosApi";
 import { toast } from "react-toastify";
 
 

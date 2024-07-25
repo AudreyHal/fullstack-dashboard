@@ -1,4 +1,4 @@
-import axiosApi from '@/src/services/axiosApi';
+import axiosApi from '@/src/utilities/axiosApi';
 import { AveragesDataResponseType, MetricsDataResponseType } from '@/src/types';
 import { useQuery } from '@tanstack/react-query';
 import { metricsQueryKeys } from '../metricsQueryKeys';

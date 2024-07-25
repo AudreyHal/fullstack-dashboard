@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+See [main readme file](../README.md) first.
 
+
+## Running locally
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run tests:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run test
+```
+                                          
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## File Structure
 
-## Learn More
+### Project Root
+- `app`: contains all pages in the page.
+- `src`: contains the source code of the application. you can find a detailed explanation of its content [here](#source-folder)
+- `public`: everything that is available publicly in our application. e.g index.html, favicons.
+- `.env`: contains the `NEXT_PUBLIC_BASE_URL` environment variables for local development(**You are meant to add the .env provided via email**)
+- `tsconfig.json`: typescript configuration.
 
-To learn more about Next.js, take a look at the following resources:
+### Source Folder
+This contains logic, components, utilities,etc used within the pages.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `hooks`: custom react hooks.
+- `utilities`: reusable utility functions.
+- `testing-utils`: utilities used for testing.
+- `providers`: context providers.
+- `hocs`: higher-order components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Third Party Libraries
+- [Material UI](https://mui.com/material-ui/): provides accessible and well tested components as a base.
+- [react-hook-form](https://react-hook-form.com/): used to handle forms
+- [axios](https://github.com/axios/axios): http client, mainly used in the `axiosApi` abstraction.
+- [react-query](https://tanstack.com/query/v4): Caching and managing server-side state efficiently.

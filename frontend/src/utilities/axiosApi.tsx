@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken } from "../utilities/Auth";
+import { getToken } from "./Auth";
 
 // Configure axios instance
 const axiosInstance = axios.create({

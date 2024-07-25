@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { LoginInputType } from "@/src/types";
 import useLoginMutation from "@/src/hooks/react-query/Auth/mutations/useLoginMutation";
-import axiosInstance from "@/src/services/axiosApi";
+import axiosInstance from "@/src/utilities/axiosApi";
 import { setToken } from "@/src/utilities/Auth";
 import {
   Box,
