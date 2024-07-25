@@ -15,6 +15,12 @@ interface AddMetricsModalProps {
   handleClose?: () => void;
 }
 
+{
+  /**
+   * Modal component containing form to add new metrics.
+   * @component
+   */
+}
 const AddMetricsModal = ({ open, handleClose }: AddMetricsModalProps) => {
   const queryClient = useQueryClient();
   const { register, handleSubmit, reset } = useForm();
@@ -24,7 +30,7 @@ const AddMetricsModal = ({ open, handleClose }: AddMetricsModalProps) => {
     addMetricsMutation.mutate(data, {
       onSuccess: () => {
         // Invalidate and refetch related queries
-        queryClient.invalidateQueries({ queryKey: metricsQueryKeys.all()});
+        queryClient.invalidateQueries({ queryKey: metricsQueryKeys.all() });
         toast.success("Metric added succesfully");
         handleClose?.(); // Close the dialog after submission
         reset(); // Reset the form after submission

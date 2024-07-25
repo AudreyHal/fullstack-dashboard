@@ -18,7 +18,7 @@ app.use('/api/register', registerRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/metrics', authenticate, metricRoutes);
 
-// Connect to MongoDB and start the server
+// Connects to MongoDB and starts the server
 mongoose.connect('mongodb+srv://Mongo:Mongo123@metricscluster.yaqpfk6.mongodb.net/Metrics-API?retryWrites=true&w=majority&appName=MetricsCluster'
 ).then(() => {
   console.log("Connected to MongoDB");

@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 
 export const loginController = async (req: Request, res: Response) => {
-  // Validate request input
+  // validates request input
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -14,23 +14,22 @@ export const loginController = async (req: Request, res: Response) => {
   const { username, password } = req.body;
 
   try {
-    // Find the user by username
+    // finds the user by username
     const user = await User.findOne({ username }).exec();
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Compare the provided password with the stored password
+    // compares the provided password with the stored password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Create a JWT token
+    // creates a JWT token
     const payload = { userId: user.id };
     const token = jwt.sign(payload, 'your_jwt_secret', { expiresIn: '7d' });
 
-    // Send the token in response
     res.json({ token });
   } catch (err) {
     res.status(500).send('Server error');

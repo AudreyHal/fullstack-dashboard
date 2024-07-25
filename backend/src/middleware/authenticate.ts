@@ -8,16 +8,15 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
   if (!token) return res.status(401).send('Access denied. No token provided.');
 
   try {
-    // Verify the token and extract the userId
+    // verifies the token and extracts the userId
     const decoded = jwt.verify(token, 'your_jwt_secret') as { userId: string };
 
-    // Find the user based on userId from the decoded token
+    // finds the user based on userId from the decoded token
     req.user = await User.findById(decoded.userId).exec();
     
-    // Check if user exists
+    // checks if user exists
     if (!req.user) return res.status(401).send('Access denied. Invalid token.');
     
-    // Proceed to the next middleware or route handler
     next();
   } catch (err) {
     res.status(401).send('Access denied. Invalid token.');

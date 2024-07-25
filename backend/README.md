@@ -10,6 +10,8 @@ First, run the development server:
 npm run start
 ```
 
+You should wait to see a message saying `Connected to MongoDB` and  `Server is running on port 3002` on ypur terminal.
+
 ## File Structure
 
 ### Project Root
@@ -18,9 +20,9 @@ npm run start
 - `tsconfig.json`: typescript configuration.
 
 ### Source Folder
-The src directory contains the core components of the application, organized as follows:
+The src directory contains the core components of the application, organized as follows.
 
-- `src/routes/`: contains the route handlers for different parts of the application:
+- `src/routes/`: contains the route handlers for different parts of the application.
 
 - `src/middleware/`: contains middleware functions used throughout the application:
 

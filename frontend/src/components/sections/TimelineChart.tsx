@@ -9,6 +9,10 @@ const Bar = dynamic(() => import("react-chartjs-2").then((mod) => mod.Bar), {
   ssr: false,
 });
 
+/**
+ * Chart for displaying metrics timeline
+ * @component
+ */
 const TimelineChart = () => {
   const getAllMetrics = useGetAllMetricsQuery();
   const getAllMetricsData = getAllMetrics.data;
